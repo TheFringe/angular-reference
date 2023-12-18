@@ -7,6 +7,12 @@
       "jasmine"
     ]
   },
+  "files": [
+    "setup-jest.ts"
+  ],
+  "jest": {
+    "diagnostics": false
+  },
   "include": [
     "src/**/*.spec.ts",
     "src/**/*.d.ts"
