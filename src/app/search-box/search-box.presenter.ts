@@ -1,11 +1,11 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, debounceTime, distinctUntilChanged, Observable} from "rxjs";
+import {debounceTime, distinctUntilChanged, Observable, Subject} from "rxjs";
 
 @Injectable()
 export class SearchBoxPresenter {
   public searchTerm$: Observable<string>;
 
-  private searchTerm: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private searchTerm: Subject<string> = new Subject();
 
   constructor() {
     this.searchTerm$ = this.searchTerm.pipe(debounceTime(300), distinctUntilChanged());

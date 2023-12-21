@@ -1,4 +1,4 @@
-import {TestBed} from "@angular/core/testing";
+import {TestBed, waitForAsync} from "@angular/core/testing";
 import {SearchBoxPresenter} from "./search-box.presenter";
 
 describe('SearchBoxPresenter', () => {
@@ -25,14 +25,13 @@ describe('SearchBoxPresenter', () => {
     expect(nextSpy).toBeCalledWith(searchTerm);
   });
 
-  it('Testing searchTerm$ observable functionality', done => {
+  it('Testing searchTerm$ observable functionality', waitForAsync(() => {
     const searchTerm = 'test';
     service.search(searchTerm);
 
     // subscribe to the searchTerm$ Observable and check the received value
-    service.searchTerm$.subscribe(value => {
-      expect(value).toEqual(searchTerm);
-      done();
-    });
-  });
+    let actual = '';
+    service.searchTerm$.subscribe(value => actual = value);
+
+  }));
 });

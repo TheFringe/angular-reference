@@ -14,7 +14,7 @@ export class SearchBoxComponent {
   @Output() search = new EventEmitter<string>();
 
   constructor(private presenter: SearchBoxPresenter) {
-    presenter.searchTerm$.subscribe(value => this.search.emit(value));
+    this.presenter.searchTerm$.subscribe(value => this.search.emit(value));
   }
 
   onSearchTermChange(term: string): void {
